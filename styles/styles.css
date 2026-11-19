@@ -1,0 +1,36 @@
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+nav {
+  width: 60vw;
+  height: 20px;
+  margin: 2rem auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+main {
+  background-color: #efe9e2;
+  height: 100vw;
+}
+
+section {
+  width: 60vw;
+  margin: 4rem auto;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+h3 {
+  font-weight: normal;
+  color: rgb(108, 108, 108);
+}

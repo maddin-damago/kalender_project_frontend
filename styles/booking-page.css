@@ -1,0 +1,60 @@
+#heading {
+  padding-top: 3rem;
+}
+
+#steps {
+  margin-top: 3rem;
+  display: flex;
+  gap: 20px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.red {
+  background-color: red;
+}
+
+#leistungenWrapper {
+  margin-top: 2rem;
+}
+
+#leistungen {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 240px 240px 240px;
+  gap: 30px;
+}
+
+.leistung {
+  width: 220px;
+  height: 80px;
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 2px 2px 2px darkgray;
+}
+
+.preis-dauer {
+  margin-top: 0.5rem;
+  color: rgb(108, 108, 108);
+}
+
+.preis-dauer span {
+  margin-right: 10px;
+}
