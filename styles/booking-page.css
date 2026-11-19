@@ -1,9 +1,9 @@
 #heading {
-  padding-top: 3rem;
+  padding-top: 2rem;
 }
 
 #steps {
-  margin-top: 3rem;
+  margin-top: 1rem;
   display: flex;
   gap: 20px;
 }
@@ -45,7 +45,7 @@
   background-color: white;
   border: 1px solid lightgrey;
   border-radius: 10px;
-  padding: 10px;
+  padding: 15px;
   cursor: pointer;
   box-shadow: 2px 2px 2px darkgray;
 }
@@ -57,4 +57,28 @@
 
 .preis-dauer span {
   margin-right: 10px;
+}
+
+.leistung-active {
+  border: 2px solid green;
+  background-color: rgb(243, 255, 243);
+}
+
+#personen {
+  margin-top: 1.5rem;
+  display: flex;
+}
+
+#personen button {
+  padding: 8px 16px;
+  border-radius: 30px;
+  background-color: white;
+  border: 1px solid grey;
+  outline: none;
+  cursor: pointer;
+}
+
+.personen-active {
+  background-color: black !important;
+  color: white;
 }
