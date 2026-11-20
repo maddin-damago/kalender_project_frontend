@@ -22,52 +22,91 @@
         </div>
     </nav>
     <main>
-        <section id="heading">
-            <h1>Termin online buchen</h1>
-            <h3>Dienstag - Freitag 9-18 Uhr, Samstag 9-14 Uhr</h3>
-        </section>
-        <section id="steps">
-            <div class="step">
-                <div class="circle red">
-                    1
-                </div>
-                Leistung
+        <div id="all">
+            <div id="booking-data">
+                <section id="heading">
+                    <h1>Termin online buchen</h1>
+                    <h3>Dienstag - Freitag 9-18 Uhr, Samstag 9-14 Uhr</h3>
+                </section>
+                <section id="steps">
+                    <div class="step">
+                        <div class="circle red">
+                            1
+                        </div>
+                        Leistung
+                    </div>
+                    <div class="step">
+                        <div class="circle red">
+                            2
+                        </div>
+                        Person
+                    </div>
+                    <div class="step">
+                        <div class="circle red">
+                            3
+                        </div>
+                        Zeit
+                    </div>
+                    <div class="step">
+                        <div class="circle red">
+                            4
+                        </div>
+                        Ihre Daten
+                    </div>
+                </section>
+                <section id="leistungenWrapper">
+                    <h3>1 - Leistungen</h3>
+                    <div id="leistungen"></div>
+                </section>
+                <section id="mitarbeiter">
+                    <h3>1 - Personen</h3>
+                    <div id="personen">
+
+                    </div>
+                </section>
+                <section id="timeslotsWrapper">
+                    <h3>3 - Datum und Uhrzeit</h3>
+                    <div id="timeslots">
+
+                    </div>
+                </section>
             </div>
-            <div class="step">
-                <div class="circle red">
-                    2
-                </div>
-                Person
+            <div id="booking-form">
+                <section id="termin-daten">
+                    <h3>Ihre Buchung</h3>
+                    <div class="buchungs-daten">
+                        <span>Leistung</span>
+                        <span>Schneiden</span>
+                    </div>
+                    <div class="buchungs-daten">
+                        <span>Person</span>
+                        <span>Maja</span>
+                    </div>
+                    <div class="buchungs-daten">
+                        <span>Termin</span>
+                        <span>24.11.2026</span>
+                    </div>
+                    <div class="buchungs-daten">
+                        <span>Dauer</span>
+                        <span>45 Min</span>
+                    </div>
+                </section>
+                <form action="#">
+                    <div class="buchungs-daten">
+                        <label for="kundenName">Name:</label>
+                        <input type="text" id="kundenName" placeholder="Ihr Name">
+                    </div>
+                    <div class="buchungs-daten">
+                        <label for="kundenTel">Telefon</label>
+                        <input type="number" id="kundenTel" placeholder="Ihre Telefonnummer">
+                    </div>
+                    <div class="buchungs-daten">
+                        <label for="kundenEmail">E-Mail</label>
+                        <input type="email" id="kundenEmail" placeholder="Ihre E-Mail">
+                    </div>
+                </form>
             </div>
-            <div class="step">
-                <div class="circle red">
-                    3
-                </div>
-                Zeit
-            </div>
-            <div class="step">
-                <div class="circle red">
-                    4
-                </div>
-                Ihre Daten
-            </div>
-        </section>
-        <section id="leistungenWrapper">
-            <h3>1 - Leistungen</h3>
-            <div id="leistungen"></div>
-        </section>
-        <section id="mitarbeiter">
-            <h3>1 - Personen</h3>
-            <div id="personen">
-                
-            </div>
-        </section>
-        <section id="timeslotsWrapper">
-            <h3>3 - Datum und Uhrzeit</h3>
-            <div id="timeslots">
-                
-            </div>
-        </section>
+        </div>
     </main>
 
     <script type="module" src="./js/booking-page-rendering.js"></script>

@@ -21,8 +21,14 @@ main {
   height: 100vw;
 }
 
-section {
+#all {
   width: 60vw;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+}
+
+section {
   margin: 4rem auto;
 }
 

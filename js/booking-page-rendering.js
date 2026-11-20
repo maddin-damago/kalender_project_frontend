@@ -58,6 +58,7 @@ function renderLeistungen(leistungen, leistungsIds) {
         leistungsIds.push(l.id);
       }
       renderMitarbeiter();
+      renderTimeslots(timeslotsInit);
     });
   });
 }
@@ -83,7 +84,6 @@ async function renderMitarbeiter() {
 
   Array.from(personenContainer.children).forEach((cn) => {
     cn.addEventListener("click", async () => {
-      console.log(cn.dataset.id);
       Array.from(personenContainer.children).forEach((cn2) => {
         cn2.classList.remove("personen-active");
       });
