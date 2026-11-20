@@ -1,20 +1,27 @@
 "use strict";
 
-import { getLeistungen, getMitarbeiterViaLeistungenIds } from "./api/api.js";
+import {
+  getLeistungen,
+  getMitarbeiterViaLeistungenIds,
+  getTimeslotsForMitarbeiter,
+} from "./api/api.js";
 
 const leistungenContainer = document.getElementById("leistungen");
 const personenContainer = document.getElementById("personen");
+const timeslotsContainer = document.getElementById("timeslots");
 const leistungen = await getLeistungen();
 const leistungsIds = [];
-renderBookingPage(leistungen, leistungsIds);
+renderLeistungen(leistungen, leistungsIds);
+renderMitarbeiter();
+const timeslotsInit = await getTimeslotsForMitarbeiter();
+renderTimeslots(timeslotsInit);
 
 document.addEventListener("DOMContentLoaded", async () => {
-  //   console.log(leistungen);
+  console.log("Hello World");
 });
 
-function renderBookingPage(leistungen, leistungsIds) {
+function renderLeistungen(leistungen, leistungsIds) {
   leistungenContainer.innerHTML = "";
-  personenContainer.innerHTML = "";
 
   leistungen.forEach((l) => {
     const { leistung, dauer_in_min, preis_in_eur } = l;
@@ -42,15 +49,7 @@ function renderBookingPage(leistungen, leistungsIds) {
 
     leistungenContainer.append(leistungEL);
 
-    // event listener
-
     leistungEL.addEventListener("click", async () => {
-      personenContainer.innerHTML = "";
-      const egalBtn = document.createElement("button");
-      egalBtn.type = "button";
-      egalBtn.textContent = "Egal";
-      egalBtn.classList.add("personen-active");
-      personenContainer.append(egalBtn);
       leistungEL.classList.toggle("leistung-active");
       if (leistungsIds.includes(l.id)) {
         let idx = leistungsIds.indexOf(l.id);
@@ -58,22 +57,55 @@ function renderBookingPage(leistungen, leistungsIds) {
       } else {
         leistungsIds.push(l.id);
       }
-      const mitarbeiterAvailableForLeistungen =
-        await getMitarbeiterViaLeistungenIds(leistungsIds);
-      console.log(mitarbeiterAvailableForLeistungen);
-
-      mitarbeiterAvailableForLeistungen.forEach((ma) => {
-        const maBtn = document.createElement("button");
-        maBtn.type = "button";
-        maBtn.textContent = ma.ma_name;
-
-        personenContainer.append(maBtn);
-      });
+      renderMitarbeiter();
     });
   });
+}
+
+async function renderMitarbeiter() {
+  personenContainer.innerHTML = "";
+
+  const mitarbeiterAvailableForLeistungen =
+    await getMitarbeiterViaLeistungenIds(leistungsIds);
+
   const egalBtn = document.createElement("button");
   egalBtn.type = "button";
   egalBtn.textContent = "Egal";
   egalBtn.classList.add("personen-active");
   personenContainer.append(egalBtn);
+  mitarbeiterAvailableForLeistungen.forEach((ma) => {
+    const maBtn = document.createElement("button");
+    maBtn.type = "button";
+    maBtn.textContent = ma.ma_name;
+    maBtn.dataset.id = ma.id;
+    personenContainer.append(maBtn);
+  });
+
+  Array.from(personenContainer.children).forEach((cn) => {
+    cn.addEventListener("click", async () => {
+      console.log(cn.dataset.id);
+      Array.from(personenContainer.children).forEach((cn2) => {
+        cn2.classList.remove("personen-active");
+      });
+      cn.classList.add("personen-active");
+
+      const timeslots = await getTimeslotsForMitarbeiter(cn.dataset.id);
+      renderTimeslots(timeslots);
+    });
+  });
+}
+
+function renderTimeslots(timeslots) {
+  timeslotsContainer.innerHTML = "";
+
+  timeslots.forEach((ts) => {
+    const slotBtnEl = document.createElement("button");
+    slotBtnEl.textContent = ts.value;
+    slotBtnEl.classList.add("timeslot-button");
+    if (ts.isAvailable === false) {
+      slotBtnEl.classList.add("timeslot-unavailable");
+    }
+
+    timeslotsContainer.append(slotBtnEl);
+  });
 }

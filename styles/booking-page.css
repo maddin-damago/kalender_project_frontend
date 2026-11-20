@@ -71,6 +71,7 @@
 
 #personen button {
   padding: 8px 16px;
+  margin-right: 1rem;
   border-radius: 30px;
   background-color: white;
   border: 1px solid grey;
@@ -81,4 +82,23 @@
 .personen-active {
   background-color: black !important;
   color: white;
+}
+
+#timeslots {
+  width: 800px;
+}
+
+.timeslot-button {
+  padding: 5px 12px;
+  margin: 0.5rem;
+  cursor: pointer;
+  border-radius: 10px;
+  outline: 0;
+  border: 1px solid lightgray;
+  background-color: rgb(243, 255, 243);
+}
+
+.timeslot-unavailable {
+  background-color: rgb(204, 154, 154);
+  text-decoration: line-through;
 }
