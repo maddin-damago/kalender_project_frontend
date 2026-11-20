@@ -9,6 +9,10 @@ import {
 const leistungenContainer = document.getElementById("leistungen");
 const personenContainer = document.getElementById("personen");
 const timeslotsContainer = document.getElementById("timeslots");
+const vornameEL = document.getElementById("kundenVorname");
+const nachnameEL = document.getElementById("kundenNachname");
+const telefonEL = document.getElementById("kundenTel");
+const emailEL = document.getElementById("kundenEmail");
 const leistungen = await getLeistungen();
 const leistungsIds = [];
 renderLeistungen(leistungen, leistungsIds);
@@ -16,9 +20,36 @@ renderMitarbeiter();
 const timeslotsInit = await getTimeslotsForMitarbeiter();
 renderTimeslots(timeslotsInit);
 
+const buchungState = {
+  kunde: {
+    vorname: "",
+    nachname: "",
+    email: "",
+    telefon: "",
+  },
+  ma: undefined,
+  leistungen: leistungsIds,
+  start_datum: "",
+};
+
 document.addEventListener("DOMContentLoaded", async () => {
   console.log("Hello World");
 });
+
+vornameEL.addEventListener("change", () => {
+  buchungState.kunde.vorname = vornameEL.value;
+});
+nachnameEL.addEventListener("change", () => {
+  buchungState.kunde.nachname = nachnameEL.value;
+});
+telefonEL.addEventListener("change", () => {
+  buchungState.kunde.telefon = telefonEL.value;
+});
+emailEL.addEventListener("change", () => {
+  buchungState.kunde.email = emailEL.value;
+});
+
+console.log(buchungState);
 
 function renderLeistungen(leistungen, leistungsIds) {
   leistungenContainer.innerHTML = "";
@@ -84,6 +115,7 @@ async function renderMitarbeiter() {
 
   Array.from(personenContainer.children).forEach((cn) => {
     cn.addEventListener("click", async () => {
+      buchungState.ma = cn.dataset.id;
       Array.from(personenContainer.children).forEach((cn2) => {
         cn2.classList.remove("personen-active");
       });
